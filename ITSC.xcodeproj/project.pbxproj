@@ -13,6 +13,11 @@
 		34EBE011271F08E2005CC9EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34EBE00F271F08E2005CC9EB /* Main.storyboard */; };
 		34EBE013271F08E3005CC9EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34EBE012271F08E3005CC9EB /* Assets.xcassets */; };
 		34EBE01E271F0910005CC9EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34EBE01D271F0910005CC9EB /* LaunchScreen.storyboard */; };
+		7CC061D227340E2F00A7E7E4 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D127340E2F00A7E7E4 /* NewsTableViewController.swift */; };
+		7CC061D427340E8600A7E7E4 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D327340E8600A7E7E4 /* NoticeTableViewController.swift */; };
+		7CC061D627340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D527340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift */; };
+		7CC061D827340F2D00A7E7E4 /* SecurityBulletinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D727340F2D00A7E7E4 /* SecurityBulletinTableViewController.swift */; };
+		7CC061DA273410D100A7E7E4 /* TemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D9273410D100A7E7E4 /* TemplateTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		34EBE012271F08E3005CC9EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34EBE017271F08E3005CC9EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34EBE01D271F0910005CC9EB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7CC061D127340E2F00A7E7E4 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		7CC061D327340E8600A7E7E4 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
+		7CC061D527340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformatizationNewsTableViewController.swift; sourceTree = "<group>"; };
+		7CC061D727340F2D00A7E7E4 /* SecurityBulletinTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityBulletinTableViewController.swift; sourceTree = "<group>"; };
+		7CC061D9273410D100A7E7E4 /* TemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,11 @@
 				34EBE00B271F08E2005CC9EB /* SceneDelegate.swift */,
 				34EBE00D271F08E2005CC9EB /* ViewController.swift */,
 				34EBE00F271F08E2005CC9EB /* Main.storyboard */,
+				7CC061D9273410D100A7E7E4 /* TemplateTableViewCell.swift */,
+				7CC061D727340F2D00A7E7E4 /* SecurityBulletinTableViewController.swift */,
+				7CC061D527340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift */,
+				7CC061D327340E8600A7E7E4 /* NoticeTableViewController.swift */,
+				7CC061D127340E2F00A7E7E4 /* NewsTableViewController.swift */,
 				34EBE012271F08E3005CC9EB /* Assets.xcassets */,
 				34EBE017271F08E3005CC9EB /* Info.plist */,
 				34EBE01D271F0910005CC9EB /* LaunchScreen.storyboard */,
@@ -138,7 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CC061D427340E8600A7E7E4 /* NoticeTableViewController.swift in Sources */,
+				7CC061D627340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift in Sources */,
+				7CC061D227340E2F00A7E7E4 /* NewsTableViewController.swift in Sources */,
 				34EBE00E271F08E2005CC9EB /* ViewController.swift in Sources */,
+				7CC061D827340F2D00A7E7E4 /* SecurityBulletinTableViewController.swift in Sources */,
+				7CC061DA273410D100A7E7E4 /* TemplateTableViewCell.swift in Sources */,
 				34EBE00A271F08E2005CC9EB /* AppDelegate.swift in Sources */,
 				34EBE00C271F08E2005CC9EB /* SceneDelegate.swift in Sources */,
 			);
