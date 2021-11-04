@@ -32,7 +32,7 @@ class NoticeTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TemplateCell", for: indexPath) as! TemplateTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NoticeTemplateCell", for: indexPath) as! TemplateTableViewCell
 
         // Configure the cell...
         
