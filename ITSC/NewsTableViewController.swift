@@ -29,20 +29,32 @@ class NewsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         print("News in ur area")
+        var pageNumber = 1
         if let url = URL(string: "https://itsc.nju.edu.cn/xwdt/list.htm"),
            let html = try? String(contentsOf: url),
            let doc = try? SwiftSoup.parse(html) {
             if let articleList = try! doc.select(".col_news_con").first()?.child(0).child(0).child(0).child(0) {
-                for article in articleList.children() {
-                    if let a = try! article.select(".news_title").first()?.child(0).getElementsByTag("a") {
-                        var articleLink = try! a.attr("href")
-                        articleLink = "https://itsc.nju.edu.cn" + articleLink
-                        print("herf: \(articleLink)")
-                        var articleTitle = try! a.attr("title")
-                        print("title: \(articleTitle)")
-                        var articleTime = try! article.select(".news_meta").first()!.text()
-                        print("time: \(articleTime)")
-                        articles.append(Article(title: articleTitle, time: articleTime, link: articleLink))
+                pageNumber = Int(try! doc.select(".all_pages").text())!
+                print(pageNumber)
+            }
+        }
+        for page in 1...pageNumber {
+            var urlString = "https://itsc.nju.edu.cn/xwdt/list" + String(page) + ".htm"
+            if let url = URL(string: urlString),
+               let html = try? String(contentsOf: url),
+               let doc = try? SwiftSoup.parse(html) {
+                if let articleList = try! doc.select(".col_news_con").first()?.child(0).child(0).child(0).child(0) {
+                    for article in articleList.children() {
+                        if let a = try! article.select(".news_title").first()?.child(0).getElementsByTag("a") {
+                            var articleLink = try! a.attr("href")
+                            articleLink = "https://itsc.nju.edu.cn" + articleLink
+                            print("herf: \(articleLink)")
+                            var articleTitle = try! a.attr("title")
+                            print("title: \(articleTitle)")
+                            var articleTime = try! article.select(".news_meta").first()!.text()
+                            print("time: \(articleTime)")
+                            articles.append(Article(title: articleTitle, time: articleTime, link: articleLink))
+                        }
                     }
                 }
             }
