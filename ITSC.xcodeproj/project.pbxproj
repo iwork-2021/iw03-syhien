@@ -13,6 +13,9 @@
 		34EBE011271F08E2005CC9EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34EBE00F271F08E2005CC9EB /* Main.storyboard */; };
 		34EBE013271F08E3005CC9EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34EBE012271F08E3005CC9EB /* Assets.xcassets */; };
 		34EBE01E271F0910005CC9EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34EBE01D271F0910005CC9EB /* LaunchScreen.storyboard */; };
+		7CB829BB273E8227003E2DC4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7CB829BA273E8227003E2DC4 /* Alamofire */; };
+		7CB829BF273E87D1003E2DC4 /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 7CB829BE273E87D1003E2DC4 /* Kanna */; };
+		7CB829C2273E968B003E2DC4 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 7CB829C1273E968B003E2DC4 /* SwiftSoup */; };
 		7CC061D227340E2F00A7E7E4 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D127340E2F00A7E7E4 /* NewsTableViewController.swift */; };
 		7CC061D427340E8600A7E7E4 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D327340E8600A7E7E4 /* NoticeTableViewController.swift */; };
 		7CC061D627340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D527340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift */; };
@@ -41,6 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB829BF273E87D1003E2DC4 /* Kanna in Frameworks */,
+				7CB829BB273E8227003E2DC4 /* Alamofire in Frameworks */,
+				7CB829C2273E968B003E2DC4 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +104,11 @@
 			dependencies = (
 			);
 			name = ITSC;
+			packageProductDependencies = (
+				7CB829BA273E8227003E2DC4 /* Alamofire */,
+				7CB829BE273E87D1003E2DC4 /* Kanna */,
+				7CB829C1273E968B003E2DC4 /* SwiftSoup */,
+			);
 			productName = ITSC;
 			productReference = 34EBE006271F08E2005CC9EB /* ITSC.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +137,11 @@
 				Base,
 			);
 			mainGroup = 34EBDFFD271F08E2005CC9EB;
+			packageReferences = (
+				7CB829B9273E8227003E2DC4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				7CB829BD273E87D1003E2DC4 /* XCRemoteSwiftPackageReference "Kanna" */,
+				7CB829C0273E968B003E2DC4 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = 34EBE007271F08E2005CC9EB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -370,6 +386,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7CB829B9273E8227003E2DC4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		7CB829BD273E87D1003E2DC4 /* XCRemoteSwiftPackageReference "Kanna" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com.cnpmjs.org/tid-kijyun/Kanna.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		7CB829C0273E968B003E2DC4 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://hub.fastgit.org/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7CB829BA273E8227003E2DC4 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CB829B9273E8227003E2DC4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		7CB829BE273E87D1003E2DC4 /* Kanna */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CB829BD273E87D1003E2DC4 /* XCRemoteSwiftPackageReference "Kanna" */;
+			productName = Kanna;
+		};
+		7CB829C1273E968B003E2DC4 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CB829C0273E968B003E2DC4 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 34EBDFFE271F08E2005CC9EB /* Project object */;
 }

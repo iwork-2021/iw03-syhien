@@ -6,8 +6,19 @@
 //
 
 import UIKit
+import Alamofire
+import Kanna
+import SwiftSoup
+
+struct Article {
+    var title : String
+    var time : String
+    var link : String
+}
 
 class NewsTableViewController: UITableViewController {
+    
+    var articles = [Article]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +29,24 @@ class NewsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         print("News in ur area")
+        if let url = URL(string: "https://itsc.nju.edu.cn/xwdt/list.htm"),
+           let html = try? String(contentsOf: url),
+           let doc = try? SwiftSoup.parse(html) {
+            if let articleList = try! doc.select(".col_news_con").first()?.child(0).child(0).child(0).child(0) {
+                for article in articleList.children() {
+                    if let a = try! article.select(".news_title").first()?.child(0).getElementsByTag("a") {
+                        var articleLink = try! a.attr("href")
+                        articleLink = "https://itsc.nju.edu.cn" + articleLink
+                        print("herf: \(articleLink)")
+                        var articleTitle = try! a.attr("title")
+                        print("title: \(articleTitle)")
+                        var articleTime = try! article.select(".news_meta").first()!.text()
+                        print("time: \(articleTime)")
+                        articles.append(Article(title: articleTitle, time: articleTime, link: articleLink))
+                    }
+                }
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -29,7 +58,7 @@ class NewsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return articles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,8 +66,8 @@ class NewsTableViewController: UITableViewController {
 
         // Configure the cell...
         
-        cell.title.text = "test" + String(indexPath.row)
-        cell.detail.text = String(indexPath.row) + "test"
+        cell.title.text = articles[indexPath.row].title
+        cell.detail.text = articles[indexPath.row].time
 
         return cell
     }
