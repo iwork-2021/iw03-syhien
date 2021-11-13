@@ -19,6 +19,7 @@
 		7CC061D627340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D527340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift */; };
 		7CC061D827340F2D00A7E7E4 /* SecurityBulletinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D727340F2D00A7E7E4 /* SecurityBulletinTableViewController.swift */; };
 		7CC061DA273410D100A7E7E4 /* TemplateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC061D9273410D100A7E7E4 /* TemplateTableViewCell.swift */; };
+		7CD5B91A273FBC2E00E4A7D5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD5B919273FBC2E00E4A7D5 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		7CC061D527340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformatizationNewsTableViewController.swift; sourceTree = "<group>"; };
 		7CC061D727340F2D00A7E7E4 /* SecurityBulletinTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityBulletinTableViewController.swift; sourceTree = "<group>"; };
 		7CC061D9273410D100A7E7E4 /* TemplateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTableViewCell.swift; sourceTree = "<group>"; };
+		7CD5B919273FBC2E00E4A7D5 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				34EBE00B271F08E2005CC9EB /* SceneDelegate.swift */,
 				34EBE00D271F08E2005CC9EB /* ViewController.swift */,
 				34EBE00F271F08E2005CC9EB /* Main.storyboard */,
+				7CD5B919273FBC2E00E4A7D5 /* AboutViewController.swift */,
 				7CC061D9273410D100A7E7E4 /* TemplateTableViewCell.swift */,
 				7CC061D727340F2D00A7E7E4 /* SecurityBulletinTableViewController.swift */,
 				7CC061D527340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift */,
@@ -164,6 +167,7 @@
 				7CC061D427340E8600A7E7E4 /* NoticeTableViewController.swift in Sources */,
 				7CC061D627340EFB00A7E7E4 /* InformatizationNewsTableViewController.swift in Sources */,
 				7CC061D227340E2F00A7E7E4 /* NewsTableViewController.swift in Sources */,
+				7CD5B91A273FBC2E00E4A7D5 /* AboutViewController.swift in Sources */,
 				34EBE00E271F08E2005CC9EB /* ViewController.swift in Sources */,
 				7CC061D827340F2D00A7E7E4 /* SecurityBulletinTableViewController.swift in Sources */,
 				7CC061DA273410D100A7E7E4 /* TemplateTableViewCell.swift in Sources */,
