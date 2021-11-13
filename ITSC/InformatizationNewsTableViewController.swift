@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import SwiftSoup
 
 class InformatizationNewsTableViewController: UITableViewController {
+    
+    var articles = [Article]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +20,47 @@ class InformatizationNewsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        var pageNumber = 1
+        if let url = URL(string: "https://itsc.nju.edu.cn/wlyxqk/list.htm"),
+           let html = try? String(contentsOf: url),
+           let doc = try? SwiftSoup.parse(html) {
+            if (try! doc.select(".col_news_con").first()?.child(0).child(0).child(0).child(0)) != nil {
+                pageNumber = Int(try! doc.select(".all_pages").text())!
+//                print(pageNumber)
+            }
+        }
+        let operationQueue = OperationQueue()
+        var operations = [BlockOperation]()
+        for page in 1...pageNumber {
+            let operation = BlockOperation {
+                let urlString = "https://itsc.nju.edu.cn/wlyxqk/list" + String(page) + ".htm"
+                if let url = URL(string: urlString),
+                   let html = try? String(contentsOf: url),
+                   let doc = try? SwiftSoup.parse(html) {
+                    if let articleList = try! doc.select(".col_news_con").first()?.child(0).child(0).child(0).child(0) {
+                        for article in articleList.children() {
+                            if let a = try! article.select(".news_title").first()?.child(0).getElementsByTag("a") {
+                                var articleLink = try! a.attr("href")
+                                articleLink = "https://itsc.nju.edu.cn" + articleLink
+    //                            print("herf: \(articleLink)")
+                                let articleTitle = try! a.attr("title")
+    //                            print("title: \(articleTitle)")
+                                let articleTime = try! article.select(".news_meta").first()!.text()
+    //                            print("time: \(articleTime)")
+                                DispatchQueue.main.async {
+                                    self.articles.append(Article(title: articleTitle, time: articleTime, link: articleLink))
+                                    self.tableView.reloadData()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            operations.append(operation)
+        }
+        for i in operations {
+            operationQueue.addOperation(i)
+        }
     }
 
     // MARK: - Table view data source
@@ -28,7 +72,7 @@ class InformatizationNewsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return articles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,8 +80,8 @@ class InformatizationNewsTableViewController: UITableViewController {
 
         // Configure the cell...
         
-        cell.title.text = "test" + String(indexPath.row)
-        cell.detail.text = String(indexPath.row) + "test"
+        cell.title.text = articles[indexPath.row].title
+        cell.detail.text = articles[indexPath.row].time
 
         return cell
     }

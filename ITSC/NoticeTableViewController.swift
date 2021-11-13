@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Alamofire
-import Kanna
 import SwiftSoup
 
 
@@ -32,26 +30,37 @@ class NoticeTableViewController: UITableViewController {
 //                print(pageNumber)
             }
         }
+        let operationQueue = OperationQueue()
+        var operations = [BlockOperation]()
         for page in 1...pageNumber {
-            let urlString = "https://itsc.nju.edu.cn/tzgg/list" + String(page) + ".htm"
-            if let url = URL(string: urlString),
-               let html = try? String(contentsOf: url),
-               let doc = try? SwiftSoup.parse(html) {
-                if let articleList = try! doc.select(".col_news_con").first()?.child(0).child(0).child(0).child(0) {
-                    for article in articleList.children() {
-                        if let a = try! article.select(".news_title").first()?.child(0).getElementsByTag("a") {
-                            var articleLink = try! a.attr("href")
-                            articleLink = "https://itsc.nju.edu.cn" + articleLink
-//                            print("herf: \(articleLink)")
-                            let articleTitle = try! a.attr("title")
-//                            print("title: \(articleTitle)")
-                            let articleTime = try! article.select(".news_meta").first()!.text()
-//                            print("time: \(articleTime)")
-                            articles.append(Article(title: articleTitle, time: articleTime, link: articleLink))
+            let operation = BlockOperation {
+                let urlString = "https://itsc.nju.edu.cn/tzgg/list" + String(page) + ".htm"
+                if let url = URL(string: urlString),
+                   let html = try? String(contentsOf: url),
+                   let doc = try? SwiftSoup.parse(html) {
+                    if let articleList = try! doc.select(".col_news_con").first()?.child(0).child(0).child(0).child(0) {
+                        for article in articleList.children() {
+                            if let a = try! article.select(".news_title").first()?.child(0).getElementsByTag("a") {
+                                var articleLink = try! a.attr("href")
+                                articleLink = "https://itsc.nju.edu.cn" + articleLink
+    //                            print("herf: \(articleLink)")
+                                let articleTitle = try! a.attr("title")
+    //                            print("title: \(articleTitle)")
+                                let articleTime = try! article.select(".news_meta").first()!.text()
+    //                            print("time: \(articleTime)")
+                                DispatchQueue.main.async {
+                                    self.articles.append(Article(title: articleTitle, time: articleTime, link: articleLink))
+                                    self.tableView.reloadData()
+                                }
+                            }
                         }
                     }
                 }
             }
+            operations.append(operation)
+        }
+        for i in operations {
+            operationQueue.addOperation(i)
         }
     }
 
