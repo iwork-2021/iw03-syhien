@@ -33,13 +33,13 @@ class NewsTableViewController: UITableViewController {
         if let url = URL(string: "https://itsc.nju.edu.cn/xwdt/list.htm"),
            let html = try? String(contentsOf: url),
            let doc = try? SwiftSoup.parse(html) {
-            if let articleList = try! doc.select(".col_news_con").first()?.child(0).child(0).child(0).child(0) {
+            if (try! doc.select(".col_news_con").first()?.child(0).child(0).child(0).child(0)) != nil {
                 pageNumber = Int(try! doc.select(".all_pages").text())!
                 print(pageNumber)
             }
         }
         for page in 1...pageNumber {
-            var urlString = "https://itsc.nju.edu.cn/xwdt/list" + String(page) + ".htm"
+            let urlString = "https://itsc.nju.edu.cn/xwdt/list" + String(page) + ".htm"
             if let url = URL(string: urlString),
                let html = try? String(contentsOf: url),
                let doc = try? SwiftSoup.parse(html) {
@@ -49,9 +49,9 @@ class NewsTableViewController: UITableViewController {
                             var articleLink = try! a.attr("href")
                             articleLink = "https://itsc.nju.edu.cn" + articleLink
                             print("herf: \(articleLink)")
-                            var articleTitle = try! a.attr("title")
+                            let articleTitle = try! a.attr("title")
                             print("title: \(articleTitle)")
-                            var articleTime = try! article.select(".news_meta").first()!.text()
+                            let articleTime = try! article.select(".news_meta").first()!.text()
                             print("time: \(articleTime)")
                             articles.append(Article(title: articleTitle, time: articleTime, link: articleLink))
                         }
