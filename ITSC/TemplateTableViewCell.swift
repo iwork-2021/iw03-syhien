@@ -24,4 +24,19 @@ class TemplateTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if let detail = self.detail {
+            detail.sizeToFit()
+            let rightMargin: CGFloat = 16
+            let detailWidth = rightMargin + detail.frame.size.width
+            detail.frame.origin.x = self.frame.size.width - detailWidth
+            detail.textAlignment = .left
+            if let text = self.title {
+                if text.frame.origin.x + text.frame.size.width > self.frame.width - detailWidth {
+                    text.frame.size.width = self.frame.width - detailWidth - text.frame.origin.x
+                }
+            }
+        }
+    }
 }
