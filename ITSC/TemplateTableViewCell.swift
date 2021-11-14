@@ -11,6 +11,7 @@ class TemplateTableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var detail: UILabel!
+    var link: String!
     
     override func awakeFromNib() {
         super.awakeFromNib()

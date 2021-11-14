@@ -15,6 +15,7 @@ class NoticeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -50,6 +51,9 @@ class NoticeTableViewController: UITableViewController {
     //                            print("time: \(articleTime)")
                                 DispatchQueue.main.async {
                                     self.articles.append(Article(title: articleTitle, time: articleTime, link: articleLink))
+                                    self.articles.sort { a, b in
+                                        return a.time > b.time
+                                    }
                                     self.tableView.reloadData()
                                 }
                             }
@@ -122,14 +126,15 @@ class NoticeTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let articleViewController = segue.destination as! ArticleViewController
+        let cell = sender as! TemplateTableViewCell
+        articleViewController.article = articles[tableView.indexPath(for: cell)!.row]
     }
-    */
 
 }
