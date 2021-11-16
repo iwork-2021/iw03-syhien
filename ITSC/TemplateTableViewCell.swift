@@ -26,6 +26,11 @@ class TemplateTableViewCell: UITableViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        self.title.sizeToFit()
+        self.detail.sizeToFit()
+        if self.frame.size.width > self.title.frame.size.width + self.detail.frame.size.width + 30 {
+            return
+        }
         if let detail = self.detail {
             detail.sizeToFit()
             let rightMargin: CGFloat = 16
