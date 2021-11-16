@@ -10,11 +10,14 @@ import SwiftSoup
 
 class InformatizationNewsTableViewController: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    var searching : Bool = false
+    var searchedArticles = [Article]()
     var articles = [Article]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.searchBar.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -76,7 +79,7 @@ class InformatizationNewsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return articles.count
+        return searching ? searchedArticles.count : articles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,9 +87,13 @@ class InformatizationNewsTableViewController: UITableViewController {
 
         // Configure the cell...
         
-        cell.title.text = articles[indexPath.row].title
-        cell.detail.text = articles[indexPath.row].time
-
+        if searching {
+            cell.title.text = searchedArticles[indexPath.row].title
+            cell.detail.text = searchedArticles[indexPath.row].time
+        } else {
+            cell.title.text = articles[indexPath.row].title
+            cell.detail.text = articles[indexPath.row].time
+        }
         return cell
     }
 
@@ -136,4 +143,23 @@ class InformatizationNewsTableViewController: UITableViewController {
         articleViewController.article = articles[tableView.indexPath(for: cell)!.row]
     }
 
+}
+
+extension InformatizationNewsTableViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            searching = false
+        } else {
+            searching = true
+            searchedArticles = articles.filter { $0.title.contains(searchText)}
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.text! = ""
+        tableView.reloadData()
+    }
 }

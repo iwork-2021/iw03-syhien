@@ -37,7 +37,7 @@ class ArticleViewController: UIViewController {
                                 let imageHeight = image!.size.height / image!.size.width * imageWidth
                                 attach.bounds = CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight)
                                 let imgString = NSAttributedString(attachment: attach)
-                                var mutableString = NSMutableAttributedString(attributedString: textTextView.attributedText!)
+                                let mutableString = NSMutableAttributedString(attributedString: textTextView.attributedText!)
                                 mutableString.append(imgString)
                                 textTextView.attributedText = mutableString
                             }
@@ -47,7 +47,7 @@ class ArticleViewController: UIViewController {
                     if try! i.text().isEmpty {
                         continue
                     }
-                    var mutableString = NSMutableAttributedString(attributedString: textTextView.attributedText!)
+                    let mutableString = NSMutableAttributedString(attributedString: textTextView.attributedText!)
                     mutableString.append(NSAttributedString(string: try! i.text() + "\n"))
                     textTextView.attributedText = mutableString
 //                    textTextView.text! += try! i.text()
