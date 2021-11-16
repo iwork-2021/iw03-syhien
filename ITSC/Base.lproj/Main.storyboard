@@ -138,25 +138,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4l-gS-o2W">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bi0-Ig-Muo" userLabel="About Text">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pWO-r2-bl6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="p4l-gS-o2W" firstAttribute="top" secondItem="pWO-r2-bl6" secondAttribute="top" id="5Mm-jA-LkF"/>
-                            <constraint firstItem="p4l-gS-o2W" firstAttribute="leading" secondItem="pWO-r2-bl6" secondAttribute="leading" id="lnv-9L-aK0"/>
-                            <constraint firstItem="pWO-r2-bl6" firstAttribute="trailing" secondItem="p4l-gS-o2W" secondAttribute="trailing" id="pBb-38-UB0"/>
-                            <constraint firstItem="pWO-r2-bl6" firstAttribute="bottom" secondItem="p4l-gS-o2W" secondAttribute="bottom" id="qr7-Us-XjE"/>
+                            <constraint firstItem="bi0-Ig-Muo" firstAttribute="bottom" secondItem="pWO-r2-bl6" secondAttribute="bottom" id="95S-MA-HUF"/>
+                            <constraint firstItem="bi0-Ig-Muo" firstAttribute="trailing" secondItem="pWO-r2-bl6" secondAttribute="trailing" id="PPI-qF-d0D"/>
+                            <constraint firstItem="bi0-Ig-Muo" firstAttribute="leading" secondItem="pWO-r2-bl6" secondAttribute="leading" id="gyt-wn-iGb"/>
+                            <constraint firstItem="bi0-Ig-Muo" firstAttribute="top" secondItem="pWO-r2-bl6" secondAttribute="top" id="tGA-R0-POU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="关于ITSC" id="VlC-WL-fr0"/>
                     <connections>
-                        <outlet property="aboutLabel" destination="p4l-gS-o2W" id="Y42-Kk-ALt"/>
+                        <outlet property="aboutText" destination="bi0-Ig-Muo" id="CQt-qs-Nms"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mAy-Q2-7vE" sceneMemberID="firstResponder"/>

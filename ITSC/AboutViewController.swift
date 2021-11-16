@@ -10,22 +10,22 @@ import SwiftSoup
 
 class AboutViewController: UIViewController {
 
-    @IBOutlet weak var aboutLabel: UILabel!
+    @IBOutlet weak var aboutText: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
 
         // Do any additional setup after loading the view.
-        aboutLabel.text! = ""
+        aboutText.text! = ""
         if let url = URL(string: "https://itsc.nju.edu.cn/aqtg/list.htm"),
            let html = try? String(contentsOf: url),
            let doc = try? SwiftSoup.parse(html) {
             let details = try! doc.select(".foot-center").first()?.child(0).child(1).child(0).child(0).children()
             for detail in details! {
-                aboutLabel.text! += try! detail.child(0).child(0).child(0).getElementsByTag("a").text() + "\n"
-                aboutLabel.text! += try! detail.child(0).child(1).text() + "\n"
-                aboutLabel.text! += try! detail.child(0).child(2).text() + "\n"
-                aboutLabel.text! += "\n"
+                aboutText.text! += try! detail.child(0).child(0).child(0).getElementsByTag("a").text() + "\n"
+                aboutText.text! += try! detail.child(0).child(1).text() + "\n"
+                aboutText.text! += try! detail.child(0).child(2).text() + "\n"
+                aboutText.text! += "\n"
             }
         }
     }
