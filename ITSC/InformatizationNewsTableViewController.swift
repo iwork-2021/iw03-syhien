@@ -30,7 +30,6 @@ class InformatizationNewsTableViewController: UITableViewController {
            let doc = try? SwiftSoup.parse(html) {
             if (try! doc.select(".col_news_con").first()?.child(0).child(0).child(0).child(0)) != nil {
                 pageNumber = Int(try! doc.select(".all_pages").text())!
-//                print(pageNumber)
             }
         }
         let operationQueue = OperationQueue()
@@ -46,11 +45,8 @@ class InformatizationNewsTableViewController: UITableViewController {
                             if let a = try! article.select(".news_title").first()?.child(0).getElementsByTag("a") {
                                 var articleLink = try! a.attr("href")
                                 articleLink = "https://itsc.nju.edu.cn" + articleLink
-    //                            print("herf: \(articleLink)")
                                 let articleTitle = try! a.attr("title")
-    //                            print("title: \(articleTitle)")
                                 let articleTime = try! article.select(".news_meta").first()!.text()
-    //                            print("time: \(articleTime)")
                                 DispatchQueue.main.async {
                                     self.articles.append(Article(title: articleTitle, time: articleTime, link: articleLink))
                                     self.articles.sort { a, b in
